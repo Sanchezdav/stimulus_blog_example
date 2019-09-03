@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flash_messages' %>
+
+    <div class="container py-3">
+      <%= yield %>
+    </div>
   </body>
 </html>
