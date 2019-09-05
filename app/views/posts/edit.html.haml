@@ -1,0 +1,7 @@
+.container
+  .text-center
+    = link_to 'Back', root_path, class: 'float-right'
+    %h1 Edit your question
+  .row
+    .col-lg-8.ml-auto.mr-auto
+      = render 'form', post: @post

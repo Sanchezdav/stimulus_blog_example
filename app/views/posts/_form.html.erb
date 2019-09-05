@@ -1,0 +1,24 @@
+<div data-controller="question-form">
+  <%= form_with(model: post,
+      html: { data: { type: 'html',
+                      target: 'question-form.form',
+                      action: "ajax:send->question-form#disableSubmitButton ajax:error->question-form#onPostError" } }) do |form| %>
+
+    <div class="comment-errors" data-target="question-form.commentErrors">
+    </div>
+
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control', data: { target: 'question-form.titleInput' } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content %>
+      <%= form.rich_text_area :content %>
+    </div>
+
+    <div class="form-group">
+      <%= form.button 'Create post', class: 'btn btn-primary', data: { target: 'question-form.submitButton' } %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,32 @@
+.container
+  .row
+    .col-lg-8
+      - @posts.each do |post|
+        .card.shadow.mb-3
+          .card-body
+            - if current_user&.id == post.user_id
+              %p= link_to 'Edit', edit_post_path(post), class: 'float-right'
+            %h5.card-title
+              = link_to post.title, post_path(post)
+            .user.d-flex
+              .mr-2
+                = image_tag gravatar_image_url(post.user.email, size: 80), height: 40, width: 40, class: "rounded"
+              .info.d-flex
+                %span.item.font-weight-bold
+                  = post.user.username.capitalize
+                %span.item.font-weight-light.text-muted
+                  = post.user.full_name
+              .created-at
+                %span.font-weight-light.text-muted
+                  = time_ago_in_words(post.created_at) 
+                  ago
+          .card-footer.text-right
+            %a.card-link{:href => "#"}
+              %i.far.fa-comments
+            %a.card-link{:href => "#"}
+              %i.far.fa-heart
+    .col-lg-4
+      .card
+        .card-header Tags
+        .card-body
+          %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.</p>

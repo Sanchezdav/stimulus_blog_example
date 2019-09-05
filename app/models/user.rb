@@ -3,4 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :posts, dependent: :destroy
+
+  validates :username, presence: true, uniqueness: true
+
+  def full_name
+    return "#{first_name} #{last_name}" if first_name && last_name
+    'Bruce Wayne'
+  end
+
 end
