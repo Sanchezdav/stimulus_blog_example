@@ -7,10 +7,20 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("trix")
+require("@rails/actiontext")
+require.context('../images', true)
 
 import 'bootstrap'
 
+import "controllers"
 import '../stylesheets/application'
+
+$(document).on('turbolinks:load', function () {
+  $(".alert").delay(2000).slideUp(500, function () {
+    $(".alert").alert('close');
+  });
+});
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
