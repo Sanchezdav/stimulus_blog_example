@@ -1,0 +1,30 @@
+<div class="card shadow mb-3">
+  <div class="card-body">
+    <div class="user d-flex">
+      <div class="mr-2">
+        <%= image_tag gravatar_image_url(comment.user.email, size: 80), height: 40, width: 40, class: "rounded" %>
+      </div>
+      <div class="info d-flex">
+        <span class="item font-weight-bold">
+          <%= comment.user.username.capitalize %>
+        </span>
+        <span class="item font-weight-light text-muted">
+          <%= comment.user.full_name %>
+        </span>
+        <p><%= comment.content %></p>
+      </div>
+      <div class="created-at">
+        <span class="font-weight-light text-muted">
+          <%= time_ago_in_words(comment.created_at)  %>
+          ago
+        </span>
+      </div>
+    </div>
+  </div>
+  <% if current_user&.id == comment.user_id %>
+    <div class="card-footer text-right">
+        <%= link_to 'Delete', [comment.post, comment],
+                    method: :delete, class: "button is-danger float-right", data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+</div>

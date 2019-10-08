@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.includes(:user).last_created
+    @posts = Post.includes(:user, :comments).last_created
   end
 
   # GET /posts/1

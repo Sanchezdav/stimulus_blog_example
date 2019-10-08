@@ -3,3 +3,15 @@
     %h2= @post.title
     %hr
     %p= @post.content
+  .col-md-10
+    %section.mt-5
+      .container
+        %h2
+          %strong= @post.comments.count
+          Comments
+        %hr
+        .comment-form
+          %h3 Leave a reply
+          = render 'comments/form'
+        .mt-5
+          = render @post.comments.order(created_at: :desc)
