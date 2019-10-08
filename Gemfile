@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'devise'
+gem 'devise', ">= 4.7.1"
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'haml-rails'
