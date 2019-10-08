@@ -1,4 +1,4 @@
-<div class="card shadow mb-3">
+<div class="card shadow mb-3" data-controller="delete">
   <div class="card-body">
     <div class="user d-flex">
       <div class="mr-2">
@@ -24,7 +24,8 @@
   <% if current_user&.id == comment.user_id %>
     <div class="card-footer text-right">
         <%= link_to 'Delete', [comment.post, comment],
-                    method: :delete, class: "button is-danger float-right", data: { confirm: 'Are you sure?' } %>
+                    method: :delete, remote: true, class: "button is-danger float-right",
+                    data: { target: "delete.link", action: "ajax:beforeSend->delete#click" } %>
     </div>
   <% end %>
 </div>
